@@ -38,6 +38,15 @@
 			React.createElement( CKEditor, {
 				editor: ClassicEditor,
 				data: editorContent,
+				mention: {
+					feeds: [
+						{
+							marker: '@',
+							feed: [ '@Barney', '@Lily', '@Marshall', '@Robin', '@Ted' ],
+							minimumCharacters: 1
+						}
+					]
+				},
 				onInit: editor => {
 					window.editor = editor;
 
