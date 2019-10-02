@@ -54,8 +54,16 @@ export default class CKEditor extends React.Component {
 	}
 
 	_initializeEditor() {
+		let { config, mention } = this.props;
+		if('mention' in this.props) {
+			config = {
+				config,
+				mention
+			}
+		}
+
 		this.props.editor
-			.create( this.domContainer.current , this.props.config )
+			.create( this.domContainer.current , config )
 			.then( editor => {
 				this.editor = editor;
 
