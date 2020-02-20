@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -100,7 +100,9 @@ export default class CKEditor extends React.Component {
 				} );
 			} )
 			.catch( error => {
-				console.error( error );
+				const onErrorCallback = this.props.onError || console.error;
+
+				onErrorCallback( error );
 			} );
 	}
 
@@ -140,6 +142,7 @@ CKEditor.propTypes = {
 	onInit: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
+	onError: PropTypes.func,
 	disabled: PropTypes.bool
 };
 
